@@ -20,7 +20,7 @@ const SignIn = () => {
   const dispatch = useAppDispatch()
   const [logInError, setLogInError] = useState('')
 
-  const { getValues, handleSubmit, formState, register } = useForm({
+  const { handleSubmit, formState, register } = useForm({
     defaultValues: {
       email: '',
       password: '',
@@ -70,7 +70,7 @@ const SignIn = () => {
           )}
           <Box>
             <SignInBtnStyled type="submit">sign in</SignInBtnStyled>
-            <Link to="/signup">{`Don't have account?`}</Link>
+            <LinkStyle to="/signup">{`Don't have account?`}</LinkStyle>
           </Box>
         </FormContainerStyled>
       </GridContainer>
@@ -81,8 +81,8 @@ const SignIn = () => {
 export default SignIn
 
 const FormContainerStyled = styled('form')(() => ({
-  width: '400px',
-  background: '#afa9a9',
+  width: '500px',
+  background: '#ffffff',
   marginTop: '4rem',
   padding: '3rem',
   borderRadius: '15px',
@@ -102,22 +102,27 @@ const Box = styled(Grid)(() => ({
 }))
 const GridContainer = styled(Grid)(() => ({
   '&': {
-    background: '#ffff',
     width: '500px',
     padding: '20px',
     display: 'flex',
     flexDirection: 'column',
-    marginTop: '40px',
+    marginTop: '60px',
     borderRadius: '15px',
   },
 }))
 const TextFieldStyled = styled(TextField)(() => ({
   '&': {
+    width: '400px',
     marginBottom: '1rem',
   },
 }))
 const SignInBtnStyled = styled(Button)(() => ({
   '&': {
-    color: '#fff',
+    color: '#000000',
+    fontSize: '16px',
+    fontWeight: '600',
   },
 }))
+const LinkStyle = styled(Link)`
+  text-decoration: none;
+`

@@ -5,7 +5,6 @@ import { Data, FormSchema } from '../../components/admin/pages/meals/MealModal'
 
 export const getAllMeals = createAsyncThunk(
   'meals/getAll',
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await mealsService.getAllMeals()

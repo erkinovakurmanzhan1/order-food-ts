@@ -3,6 +3,7 @@ import AddShoppingCartTwoToneIcon from '@mui/icons-material/AddShoppingCartTwoTo
 import { styled } from '@mui/material/styles'
 import { Button } from '@mui/material'
 import { ButtonProps } from '@mui/material/Button'
+
 type Props = ButtonProps & {
   count: number
 }
@@ -21,14 +22,14 @@ export default BasketButton
 
 const StyledBasketButton = styled(Button)(() => ({
   '&': {
-    background: '#3b0c0c',
+    background: '#5A1F08',
     border: 'none',
   },
   '&:hover': {
-    background: '#7e1c1c',
+    background: '#551d07',
   },
   '&:hover > #counter': {
-    background: '#631717',
+    background: '#5A1F08',
   },
   borderRadius: '20px',
   padding: '10px 32px',
@@ -65,10 +66,11 @@ const StyledBasketButton = styled(Button)(() => ({
 const StyledTitle = styled('span')(() => ({
   marginLeft: '12px',
   marginRight: '24px',
+  color: '#ffffff',
 }))
 
-const StyledCount = styled('span')(({ theme }) => ({
-  background: theme.palette.primary.dark,
+const StyledCount = styled('span')(() => ({
+  background: '#742828',
   borderRadius: '30px',
   padding: '4px 20px',
   fontWeight: '700',

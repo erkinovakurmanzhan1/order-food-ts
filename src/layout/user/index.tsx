@@ -1,6 +1,7 @@
 import { Grid } from '@mui/material'
 import React, { useCallback, useState } from 'react'
 import { Outlet } from 'react-router-dom'
+import Basket from '../../components/basket/Basket'
 import Header from './Header'
 
 const UserLayout = () => {
@@ -12,6 +13,7 @@ const UserLayout = () => {
   return (
     <div>
       <Header onShowBasket={showBasketHandler} />
+      <Basket open={isBasketVisible} onClose={showBasketHandler} />
       <Grid>
         <Outlet />
       </Grid>

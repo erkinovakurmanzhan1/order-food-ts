@@ -7,13 +7,9 @@ import {
   Typography,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
-import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { styled } from '@mui/system'
-import { useDispatch } from 'react-redux'
-
 import { signOut } from '../../store/auth/auth.thunk'
-import { AppDispatch } from '../../store/store'
 import useAppDispatch from '../../hooks/useAppDispatch'
 
 const menus = [
@@ -34,7 +30,7 @@ const Header = () => {
     dispatch(signOut())
   }
   return (
-    <AppBar position="static">
+    <AppBarStyled position="static">
       <Toolbar>
         <Container>
           <IconButton
@@ -47,23 +43,23 @@ const Header = () => {
             <MenuIcon />
           </IconButton>
           {menus.map((item) => (
-            <NavLink
+            <LinkStyle
               key={item.path}
               to={item.path}
               style={{ marginRight: '10px' }}
             >
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              <Title variant="h6" sx={{ flexGrow: 1 }}>
                 {item.title}
-              </Typography>
-            </NavLink>
+              </Title>
+            </LinkStyle>
           ))}
 
-          <Button color="inherit" onClick={signOutNavigateHandler}>
+          <ButtonStyled variant="contained" onClick={signOutNavigateHandler}>
             Sign Out
-          </Button>
+          </ButtonStyled>
         </Container>
       </Toolbar>
-    </AppBar>
+    </AppBarStyled>
   )
 }
 
@@ -74,4 +70,25 @@ const Container = styled(Grid)`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+`
+
+const AppBarStyled = styled(AppBar)`
+  background-color: rgba(138, 43, 6, 1);
+  padding: 10px;
+  margin-bottom: 3rem;
+`
+const ButtonStyled = styled(Button)`
+  background-color: rgba(90, 31, 8, 1);
+  border-radius: 20px;
+  padding: 10px;
+  &:hover {
+    background-color: rgba(138, 43, 6, 1);
+  }
+`
+const Title = styled(Typography)`
+  color: #fff;
+  font-size: 26px;
+`
+const LinkStyle = styled(NavLink)`
+  text-decoration: none;
 `

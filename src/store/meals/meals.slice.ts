@@ -4,10 +4,14 @@ import { getAllMeals } from './meals.thunk'
 
 type MealsState = {
   items: Meal[]
+  isLoading: boolean
+  error: string
 }
 
 const initialState: MealsState = {
   items: [],
+  isLoading: false,
+  error: '',
 }
 
 export const mealsSlice = createSlice({
@@ -17,6 +21,8 @@ export const mealsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getAllMeals.fulfilled, (state, { payload }) => {
       state.items = payload
+      state.isLoading = false
+      state.error = ''
     })
   },
 })

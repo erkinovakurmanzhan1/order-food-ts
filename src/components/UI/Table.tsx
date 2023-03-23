@@ -1,3 +1,4 @@
+import styled from '@emotion/styled'
 import { Grid } from '@mui/material'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
@@ -43,7 +44,7 @@ const AppTable = <T,>({
                     align={column.align || 'left'}
                     style={column.minWidth ? { minWidth: column.minWidth } : {}}
                   >
-                    {column.header}
+                    <ColumnsHeaderStyle>{column.header}</ColumnsHeaderStyle>
                   </TableCell>
                 ))}
               </TableRow>
@@ -70,7 +71,7 @@ const AppTable = <T,>({
                           key={`row-${column.key}`}
                           align={column.align}
                         >
-                          {value}
+                          <RowTitle>{value}</RowTitle>
                         </TableCell>
                       )
                     })}
@@ -81,9 +82,8 @@ const AppTable = <T,>({
           </Table>
         </TableContainer>
         {withPagination && (
-          <TablePagination
-            rowsPerPageOptions={[2, 4]}
-            component="div"
+          <TablePaginationStyled
+            rowsPerPageOptions={[10, 50, 100]}
             count={rows.length}
             rowsPerPage={rowsPerPage}
             page={page}
@@ -96,3 +96,15 @@ const AppTable = <T,>({
   )
 }
 export default AppTable
+const TablePaginationStyled = styled(TablePagination)`
+  display: flex;
+  justify-content: center;
+`
+const ColumnsHeaderStyle = styled('p')`
+  font-size: 16px;
+  font-weight: 600;
+`
+const RowTitle = styled('p')`
+  font-size: 16px;
+  font-weight: 400;
+`

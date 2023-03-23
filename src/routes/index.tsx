@@ -7,7 +7,9 @@ import SignIn from '../layout/guest/SignIn'
 import SignUp from '../layout/guest/SignUp'
 import UserLayout from '../layout/user'
 import Meals from '../pages/admin/Meals.page'
+import OrdersPage from '../pages/admin/Orders.page'
 import NotFound from '../pages/NotFound'
+import MealsPage from '../pages/user/Meals'
 import UserOrders from '../pages/user/UserOrders'
 import { RootState } from '../store/store'
 import { ProtectectedRoute } from './ProtectedRoutes'
@@ -37,7 +39,7 @@ const AppRoutes = () => {
             <ProtectectedRoute
               isAllowed={isAllowed([UserRoles.GUEST, UserRoles.USER])}
               fallBackPath="/admin/meals"
-              component={() => <p>Meals Page</p>}
+              component={MealsPage}
             />
           }
         />
@@ -88,7 +90,7 @@ const AppRoutes = () => {
             <ProtectectedRoute
               isAllowed={isAllowed([UserRoles.ADMIN])}
               fallBackPath="/"
-              component={() => <p>orders</p>}
+              component={OrdersPage}
             />
           }
         />
