@@ -58,12 +58,18 @@ function Header({ onShowBasket }: Props) {
       <StyledLink to="/">
         <p>ReactMeals</p>
       </StyledLink>
-      <Grid>
+      <Box>
+        {isAuthorized && (
+          <LinkOrderStyle to="/userOrders">
+            <h2>My Orders</h2>
+          </LinkOrderStyle>
+        )}
         <BasketButton
           className={animationClass}
           onClick={showBasketHandler}
           count={calculateTotalAmount()}
         />
+
         {isAuthorized ? (
           <SignInBtnStyled variant="contained" onClick={signOutNavigateHandler}>
             Sign Out
@@ -76,7 +82,7 @@ function Header({ onShowBasket }: Props) {
             Sign In
           </SignInBtnStyled>
         )}
-      </Grid>
+      </Box>
     </Container>
   )
 }
@@ -102,6 +108,7 @@ const SignInBtnStyled = styled(Button)(() => ({
     border: `1px solid solid`,
     background: '#331010',
     color: '#fff',
+    borderRadius: '30px',
     marginLeft: '10rem',
     '&:hover': {
       background: 'rgba(153, 49, 8, 1)',
@@ -113,4 +120,15 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   font-size: 32px;
   font-weight: 600;
+`
+
+const LinkOrderStyle = styled(Link)`
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 1rem 3rem 0 0;
+  font-weight: 400;
+`
+const Box = styled(Grid)`
+  display: flex;
 `

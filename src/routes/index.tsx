@@ -96,7 +96,16 @@ const AppRoutes = () => {
         />
       </Route>
       <Route path="*" element={<NotFound />} />
-      <Route path="/userOrders" element={<UserOrders />} />
+      <Route
+        path="/userOrders"
+        element={
+          <UserOrders
+            onShowBasket={function (): void {
+              throw new Error('Function not implemented.')
+            }}
+          />
+        }
+      />
     </Routes>
   )
 }

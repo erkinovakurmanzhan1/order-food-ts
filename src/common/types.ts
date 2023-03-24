@@ -39,6 +39,7 @@ export type OrderAdmin = {
     _id: string
   }
 }
+
 export type Basket = {
   id: string
   price: number
