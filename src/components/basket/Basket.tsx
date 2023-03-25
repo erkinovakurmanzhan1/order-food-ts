@@ -9,6 +9,7 @@ import {
 } from '../../store/basket/basket.thunk'
 import { submitOrder } from '../../store/order/order.thunk'
 import { RootState } from '../../store/store'
+import { uiSLiceActions } from '../../store/ui/ui.slice'
 import BasketItem from './BasketItem'
 import TotalAmount from './TotalAmount'
 
@@ -51,8 +52,25 @@ const Basket = ({ onClose, open }: Props) => {
   const totalPrice = {
     price: getTotalPrice(),
   }
-  const orderSubmitHandler = () => {
-    dispatch(submitOrder(totalPrice))
+  const orderSubmitHandler = async () => {
+    try {
+      await dispatch(submitOrder(totalPrice)).unwrap()
+      dispatch(
+        uiSLiceActions.showSnackBar({
+          severity: 'success',
+          message: 'Order completed successfully!',
+        })
+      )
+    } catch (error) {
+      dispatch(
+        uiSLiceActions.showSnackBar({
+          severity: 'error',
+          message: 'Failed ,Try again later!',
+        })
+      )
+    } finally {
+      onClose()
+    }
   }
   return (
     <Modal open={open} onClose={onClose}>

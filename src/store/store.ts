@@ -3,6 +3,7 @@ import authSlice from './auth/auth.slice'
 import { basketSlice } from './basket/basket.slice'
 import { mealsSlice } from './meals/meals.slice'
 import { orderSlice } from './order/order.slice'
+import { uiSlice } from './ui/ui.slice'
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     [mealsSlice.name]: mealsSlice.reducer,
     [orderSlice.name]: orderSlice.reducer,
     [basketSlice.name]: basketSlice.reducer,
+    [uiSlice.name]: uiSlice.reducer,
   },
 })
 export type RootState = ReturnType<typeof store.getState>
